@@ -3148,6 +3148,19 @@ int ObRawExprPrinter::print(ObSysFunRawExpr *expr)
           }
           DATA_PRINTF(")");
         }
+        break;
+      }
+      case T_FUN_WHITESPACE_TOKENIZE: {
+        int64_t param_num = expr->get_param_count();
+        if (param_num != 1) {
+          ret = OB_INVALID_ARGUMENT;
+          LOG_WARN("invalid param count", K(ret), K(param_num));
+        } else {
+          DATA_PRINTF("whitespace_tokenize(");
+          PRINT_EXPR(expr->get_param_expr(0));
+          DATA_PRINTF(")");
+        }
+        break;
       }
       case T_OP_GET_USER_VAR: {
         int64_t param_num = expr->get_param_count();

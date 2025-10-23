@@ -467,6 +467,7 @@
 #include "sql/engine/expr/ob_expr_element_at.h"
 #include "sql/engine/expr/ob_expr_array_cardinality.h"
 #include "sql/engine/expr/ob_expr_tokenize.h"
+#include "sql/engine/expr/ob_expr_whitespace_tokenize.h"
 #include "sql/engine/expr/ob_expr_lock_func.h"
 #include "sql/engine/expr/ob_expr_decode_trace_id.h"
 #include "sql/engine/expr/ob_expr_topn_filter.h"
@@ -1269,6 +1270,7 @@ void ObExprOperatorFactory::register_expr_operators()
     REG_OP(ObExprInnerDoubleToInt);
     REG_OP(ObExprInnerDecimalToYear);
     REG_OP(ObExprTokenize);
+    REG_OP(ObExprWhitespaceTokenize);
     REG_OP(ObExprArrayOverlaps);
     REG_OP(ObExprArrayContainsAll);
     REG_OP(ObExprArrayDistinct);

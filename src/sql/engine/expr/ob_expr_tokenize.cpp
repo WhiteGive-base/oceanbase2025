@@ -32,6 +32,8 @@
 #define USING_LOG_PREFIX SQL_ENG
 #include "sql/engine/expr/ob_expr_json_func_helper.h" // file not self-contained, there're logs inside.
 
+#define N_TOKENIZE "tokenize"
+
 namespace oceanbase
 {
 namespace sql

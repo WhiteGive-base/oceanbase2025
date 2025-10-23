@@ -38,6 +38,7 @@
 #include "ob_expr_host_ip.h"
 #include "ob_expr_trim.h"
 #include "ob_expr_tokenize.h"
+#include "ob_expr_whitespace_tokenize.h"
 #include "ob_expr_insert.h"
 #include "ob_expr_int2ip.h"
 #include "ob_expr_int_div.h"
@@ -1320,31 +1321,32 @@ static ObExpr::EvalFunc g_expr_eval_functions[] = {
   ObExprRbSelect::eval_rb_select,                                     /* 756 */
   ObExprVectorNegativeIPDistance::calc_negative_inner_product,        /* 757 */
   ObExprTokenize::eval_tokenize,                                      /* 758 */
-  ObExprEnhancedAesEncrypt::eval_aes_encrypt,                         /* 759 */
-  ObExprEnhancedAesDecrypt::eval_aes_decrypt,                         /* 760 */
-  ObExprMysqlProcInfo::eval_mysql_proc_info,                          /* 761 */
-  ObExprArrayOverlaps::eval_array_overlaps,                           /* 762 */
-  ObExprArrayContainsAll::eval_array_contains_all,                    /* 763 */
-  ObExprInnerIsTrue::decimal_int_is_true_start,                       /* 764 */
-  ObExprInnerIsTrue::decimal_int_is_true_end,                         /* 765 */
-  ObExprInnerIsTrue::json_is_true_start,                              /* 766 */
-  ObExprInnerIsTrue::json_is_true_end,                                /* 767 */
-  ObExprGetMySQLRoutineParameterTypeStr::get_mysql_routine_parameter_type_str, /* 768 */
-  ObExprArrayDistinct::eval_array_distinct,                           /* 769 */
-  ObExprArrayRemove::eval_array_remove_int64_t,                       /* 770 */
-  ObExprArrayRemove::eval_array_remove_float,                         /* 771 */
-  ObExprArrayRemove::eval_array_remove_double,                        /* 772 */
-  ObExprArrayRemove::eval_array_remove_ObString,                      /* 773 */
-  ObExprArrayRemove::eval_array_remove_array,                         /* 774 */
-  ObExprArrayMap::eval_array_map,                                     /* 775 */
-  ObExprOraLoginUser::eval_ora_login_user,                            /* 776 */
-  ObExprArrayToString::eval_array_to_string,                          /* 777 */
-  ObExprStringToArray::eval_string_to_array,                          /* 778 */
-  ObExprArrayAppend::eval_array_append,                               /* 779 */
-  ObExprElementAt::eval_element_at,                                   /* 780 */
-  ObExprArrayCardinality::eval_array_cardinality,                     /* 781 */
-  ObExprRbBuild::eval_rb_build,                                       /* 782 */
-  ObExprArrayPrepend::eval_array_prepend,                             /* 783 */
+  ObExprWhitespaceTokenize::eval_whitespace_tokenize,                 /* 759 */
+  ObExprEnhancedAesEncrypt::eval_aes_encrypt,                         /* 760 */
+  ObExprEnhancedAesDecrypt::eval_aes_decrypt,                         /* 761 */
+  ObExprMysqlProcInfo::eval_mysql_proc_info,                          /* 762 */
+  ObExprArrayOverlaps::eval_array_overlaps,                           /* 763 */
+  ObExprArrayContainsAll::eval_array_contains_all,                    /* 764 */
+  ObExprInnerIsTrue::decimal_int_is_true_start,                       /* 765 */
+  ObExprInnerIsTrue::decimal_int_is_true_end,                         /* 766 */
+  ObExprInnerIsTrue::json_is_true_start,                              /* 767 */
+  ObExprInnerIsTrue::json_is_true_end,                                /* 768 */
+  ObExprGetMySQLRoutineParameterTypeStr::get_mysql_routine_parameter_type_str, /* 769 */
+  ObExprArrayDistinct::eval_array_distinct,                           /* 770 */
+  ObExprArrayRemove::eval_array_remove_int64_t,                       /* 771 */
+  ObExprArrayRemove::eval_array_remove_float,                         /* 772 */
+  ObExprArrayRemove::eval_array_remove_double,                        /* 773 */
+  ObExprArrayRemove::eval_array_remove_ObString,                      /* 774 */
+  ObExprArrayRemove::eval_array_remove_array,                         /* 775 */
+  ObExprArrayMap::eval_array_map,                                     /* 776 */
+  ObExprOraLoginUser::eval_ora_login_user,                            /* 777 */
+  ObExprArrayToString::eval_array_to_string,                          /* 778 */
+  ObExprStringToArray::eval_string_to_array,                          /* 779 */
+  ObExprArrayAppend::eval_array_append,                               /* 780 */
+  ObExprElementAt::eval_element_at,                                   /* 781 */
+  ObExprArrayCardinality::eval_array_cardinality,                     /* 782 */
+  ObExprRbBuild::eval_rb_build,                                       /* 783 */
+  ObExprArrayPrepend::eval_array_prepend,                             /* 784 */wosj
   ObExprArrayConcat::eval_array_concat,                               /* 784 */
   ObExprArrayDifference::eval_array_difference,                       /* 785 */
   ObExprArrayFirst::eval_array_first,                                 /* 786 */
