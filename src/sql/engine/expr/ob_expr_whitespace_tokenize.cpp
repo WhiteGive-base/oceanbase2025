@@ -83,7 +83,7 @@ int ObExprWhitespaceTokenize::eval_whitespace_tokenize(const ObExpr &expr, ObEva
             ret = OB_ALLOCATE_MEMORY_FAILED;
             LOG_WARN("Failed to allocate memory for JSON string", K(ret));
           } else {
-            ObJsonString *json_str = new (token_buf) ObJsonString(token.ptr(), token.length(), &temp_allocator);
+            ObJsonString *json_str = new (token_buf) ObJsonString(token);
             if (OB_FAIL(json_array->append(json_str))) {
               LOG_WARN("Failed to append token to array", K(ret));
             }
