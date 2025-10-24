@@ -1896,15 +1896,15 @@ static ObExpr::EvalVectorFunc g_expr_eval_vector_functions[] = {
 
 REG_SER_FUNC_ARRAY(OB_SFA_SQL_EXPR_EVAL,
                    g_expr_eval_functions,
-                   ARRAYSIZEOF(g_expr_eval_functions));
+                   260);
 
 REG_SER_FUNC_ARRAY(OB_SFA_SQL_EXPR_EVAL_BATCH,
                    g_expr_eval_batch_functions,
-                   ARRAYSIZEOF(g_expr_eval_batch_functions));
+                   180);
 
 REG_SER_FUNC_ARRAY(OB_SFA_SQL_EXPR_EVAL_VECTOR,
                    g_expr_eval_vector_functions,
-                   ARRAYSIZEOF(g_expr_eval_vector_functions));
+                   260);
 
 static ObExpr::EvalFunc g_decimal_int_eval_functions[] = {
   ObExprAdd::add_decimalint32,
@@ -2129,11 +2129,11 @@ static ObExpr::EvalBatchFunc g_decimal_int_eval_batch_functions[] = {
 
 REG_SER_FUNC_ARRAY(OB_SFA_DECIMAL_INT_EXPR_EVAL,
                    g_decimal_int_eval_functions,
-                   ARRAYSIZEOF(g_decimal_int_eval_functions));
+                   107);
 
 REG_SER_FUNC_ARRAY(OB_SFA_DECIMAL_INT_EXPR_EVAL_BATCH,
                    g_decimal_int_eval_batch_functions,
-                   ARRAYSIZEOF(g_decimal_int_eval_batch_functions));
+                   108);
 
 static ObExpr::EvalFunc g_collection_eval_functions[] = {
   ObExprAdd::add_collection_collection_int8_t,
@@ -2188,15 +2188,15 @@ static ObExpr::EvalVectorFunc g_collection_expr_eval_vector_functions[] = {
 
 REG_SER_FUNC_ARRAY(OB_SFA_COLLECTION_EXPR_EVAL,
                    g_collection_eval_functions,
-                   ARRAYSIZEOF(g_collection_eval_functions));
+                   15);
 
 REG_SER_FUNC_ARRAY(OB_SFA_COLLECTION_EXPR_EVAL_BATCH,
                    g_collection_eval_batch_functions,
-                   ARRAYSIZEOF(g_collection_eval_batch_functions));
+                   15);
 
 REG_SER_FUNC_ARRAY(OB_SFA_COLLECTION_EXPR_EVAL_VEC,
                    g_collection_expr_eval_vector_functions,
-                   ARRAYSIZEOF(g_collection_expr_eval_vector_functions));
+                   15);
 
 } // end namespace sql
 } // end namespace oceanbase
