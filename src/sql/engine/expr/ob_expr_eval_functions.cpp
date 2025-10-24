@@ -1346,7 +1346,7 @@ static ObExpr::EvalFunc g_expr_eval_functions[] = {
   ObExprElementAt::eval_element_at,                                   /* 781 */
   ObExprArrayCardinality::eval_array_cardinality,                     /* 782 */
   ObExprRbBuild::eval_rb_build,                                       /* 783 */
-  ObExprArrayPrepend::eval_array_prepend,                             /* 784 */wosj
+  ObExprArrayPrepend::eval_array_prepend,                             /* 784 */
   ObExprArrayConcat::eval_array_concat,                               /* 784 */
   ObExprArrayDifference::eval_array_difference,                       /* 785 */
   ObExprArrayFirst::eval_array_first,                                 /* 786 */
