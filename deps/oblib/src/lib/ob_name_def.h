@@ -837,6 +837,7 @@
 #define N_WORD_COUNT "word_count"
 #define N_DOC_LENGTH "doc_length"
 #define N_TOKENIZE "tokenize"
+#define N_WHITESPACE_TOKENIZE "whitespace_tokenize"
 #define N_SELF_JOIN "self_join"
 #define N_DES_HEX_STR "DES_HEX_STR"
 #define N_YEAR "year"

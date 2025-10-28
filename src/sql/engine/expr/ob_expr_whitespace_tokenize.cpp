@@ -26,11 +26,11 @@
  namespace oceanbase {
  namespace sql {
  
- ////////////////////////////////////////////////////////////////
- ObExprWhitespaceTokenize::ObExprWhitespaceTokenize(common::ObIAllocator& alloc)
-     :ObStringExprOperator(alloc, T_FUN_SYS_WHITESPACE_TOKENIZE, "whitespace_tokenize", 1, NOT_VALID_FOR_GENERATED_COL)
- {
- }
+////////////////////////////////////////////////////////////////
+ObExprWhitespaceTokenize::ObExprWhitespaceTokenize(common::ObIAllocator& alloc)
+    :ObStringExprOperator(alloc, T_FUN_SYS_WHITESPACE_TOKENIZE, N_WHITESPACE_TOKENIZE, 1, NOT_VALID_FOR_GENERATED_COL)
+{
+}
  
  int ObExprWhitespaceTokenize::calc_result_type1(ObExprResType& type, ObExprResType &text, common::ObExprTypeCtx& type_ctx) const
  {
@@ -79,23 +79,57 @@
    return ret;
  }
  
- int ObExprWhitespaceTokenize::tokenize(ObString &output, const ObString &text, common::ObIAllocator &allocator)
- {
-   int ret = OB_SUCCESS;
- 
-   int64_t tot_length = text.length() + 2;
-   char *buf = static_cast<char *>(allocator.alloc(tot_length));
-   if (OB_ISNULL(buf)) {
-     ret = OB_ALLOCATE_MEMORY_FAILED;
-     LOG_ERROR("alloc memory failed", K(ret), K(tot_length));
-   } else {
-     output.assign_buffer(buf, static_cast<int32_t>(tot_length));
-     output.write("[", 1);
-     output.write(text.ptr(), text.length());
-     output.write("]", 1);
-   }
-   return ret;
- }
+int ObExprWhitespaceTokenize::tokenize(ObString &output, const ObString &text, common::ObIAllocator &allocator)
+{
+  int ret = OB_SUCCESS;
+  
+  // 估算输出缓冲区大小：原始文本长度 + 2（方括号）
+  int64_t max_length = text.length() + 2;
+  char *buf = static_cast<char *>(allocator.alloc(max_length));
+  if (OB_ISNULL(buf)) {
+    ret = OB_ALLOCATE_MEMORY_FAILED;
+    LOG_ERROR("alloc memory failed", K(ret), K(max_length));
+  } else {
+    int64_t pos = 0;
+    const char *str = text.ptr();
+    int64_t len = text.length();
+    
+    // 写入左方括号
+    buf[pos++] = '[';
+    
+    bool first_token = true;
+    int64_t i = 0;
+    
+    // 遍历字符串进行分词
+    while (i < len) {
+      // 跳过空白字符
+      while (i < len && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\r')) {
+        i++;
+      }
+      
+      // 如果找到非空白字符，提取词
+      if (i < len) {
+        // 添加逗号分隔符（除了第一个词）
+        if (!first_token) {
+          buf[pos++] = ',';
+        }
+        first_token = false;
+        
+        // 提取词（直到遇到空白字符）
+        while (i < len && str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i] != '\r') {
+          buf[pos++] = str[i++];
+        }
+      }
+    }
+    
+    // 写入右方括号
+    buf[pos++] = ']';
+    
+    // 设置输出
+    output.assign_ptr(buf, static_cast<int32_t>(pos));
+  }
+  return ret;
+}
  
  }  // namespace sql
  }  // namespace oceanbase
